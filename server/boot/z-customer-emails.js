@@ -18,6 +18,30 @@ module.exports = function(app) {
       customer.emails.create(email, done);
     }, function(err) {
       console.log('Customer with emails:', customer);
+      var id1 = customer.emailList[0].id;
+      var id2 = customer.emailList[1].id;
+      async.series([
+        // Find an email by id
+        function(done) {
+          customer.emails.get(id1, function(err, email) {
+            console.log('Email:', email);
+            done();
+          });
+        },
+        function(done) {
+          customer.emails.set(id2, {label: 'home', address: 'larry@yahoo.com'},
+            function(err, email) {
+              done();
+            });
+        },
+        // Remove an email by id
+        function(done) {
+          customer.emails.unset(id1, function(err) {
+            done();
+          });
+        }], function(err) {
+        console.log('Customer with emails:', customer);
+      });
     });
   });
 };
