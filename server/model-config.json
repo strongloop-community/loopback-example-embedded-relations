@@ -41,5 +41,21 @@
   "Account": {
     "dataSource": "db",
     "public": false
+  },
+  "Author": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Reader": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Book": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Link": {
+    "dataSource": "transient",
+    "public": false
   }
 }
