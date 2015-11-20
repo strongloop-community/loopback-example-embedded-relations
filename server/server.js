@@ -1,9 +1,13 @@
 var path = require('path');
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var bodyParser = require('body-parser');
 
 var app = module.exports = loopback();
+app.middleware('initial', bodyParser.urlencoded({ extended: true }));
 
+
+boot(app, __dirname);
 app.set('view engine', 'ejs'); // LoopBack comes with EJS out-of-box
 app.set('json spaces', 2); // format json responses for easier viewing
 
@@ -23,20 +27,23 @@ app.start = function() {
     }
   });
 };
+if (require.main === module) {
+  app.start();
+}
+// app.use('/', function(req, res, next) {
+//   app.models.Customer.findOne({where: {name: 'Customer A'}}, function(err, customer) {
+//     if (err) return next(err);
+//     res.render('index', {customer: customer});
+//   });
+// });
 
-// Bootstrap the application, configure models, datasources and middleware.
-// Sub-apps like REST API are mounted via boot scripts.
-boot(app, __dirname, function(err) {
-  if (err) throw err;
+var router = app.loopback.Router();
 
-  // start the server if `$ node server.js`
-  if (require.main === module)
-    app.start();
-});
-
-app.use('/', function(req, res, next) {
-  app.models.Customer.findOne({where: {name: 'Customer A'}}, function(err, customer) {
+  router.get('/', function(req, res, next) {
+    app.models.Customer.findOne({where: {name: 'Customer A'}}, function(err, customer) {
     if (err) return next(err);
     res.render('index', {customer: customer});
   });
-});
+  });
+
+app.use(router);
