@@ -15,9 +15,6 @@
     "serve-favicon": "^2.0.1",
     "loopback-component-explorer": "^2.1.0"
   },
-  "optionalDependencies": {
-    "loopback-component-explorer": "^2.1.0"
-  },
   "devDependencies": {
     "jshint": "^2.5.6"
   },
