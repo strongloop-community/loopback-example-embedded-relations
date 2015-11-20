@@ -57,5 +57,9 @@
   "Link": {
     "dataSource": "transient",
     "public": false
+  },
+  "Order": {
+    "dataSource": "db",
+    "public": true
   }
 }

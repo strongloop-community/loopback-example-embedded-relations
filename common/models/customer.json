@@ -5,8 +5,12 @@
   "properties": {
     "name": {
       "type": "string"
+    },
+    "age": {
+      "type": "string"
     }
   },
+  "validations": [],
   "relations": {
     "address": {
       "type": "embedsOne",
@@ -34,9 +38,13 @@
         "validate": true,
         "forceId": false
       }
+    },
+    "orders": {
+      "type": "hasMany",
+      "model": "Order",
+      "foreignKey": ""
     }
   },
-  "validations": [],
   "acls": [],
-  "methods": []
+  "methods": {}
 }
