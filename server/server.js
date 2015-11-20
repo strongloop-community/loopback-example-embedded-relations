@@ -5,7 +5,7 @@ var boot = require('loopback-boot');
 var app = module.exports = loopback();
 
 app.set('view engine', 'ejs'); // LoopBack comes with EJS out-of-box
-//app.set('json spaces', 2); // format json responses for easier viewing
+app.set('json spaces', 2); // format json responses for easier viewing
 
 // must be set to serve views properly when starting the app via `slc run` from
 // the project root
@@ -35,7 +35,7 @@ boot(app, __dirname, function(err) {
 });
 
 app.use('/', function(req, res, next) {
-  app.models.Customer.findOne(function(err, customer) {
+  app.models.Customer.findOne({where: {name: 'Customer A'}}, function(err, customer) {
     if (err) return next(err);
     res.render('index', {customer: customer});
   });

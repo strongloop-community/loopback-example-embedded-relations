@@ -6,10 +6,10 @@ module.exports = function(app) {
       if (err) throw err;
 
       var orders = [
-        {date: '03-23-2015', customerId: customers[0].id},
-        {date: '03-23-2015', customerId: customers[0].id},
-        {date: '03-23-2015', customerId: customers[1].id},
-        {date: '03-23-2015', customerId: customers[2].id},
+        {date: '03-23-2015', customerId: 4},
+        {date: '03-23-2015', customerId: 4},
+        {date: '03-23-2015', customerId: 5},
+        {date: '03-23-2015', customerId: 6},
         {date: '03-23-2015'}
       ];
 
