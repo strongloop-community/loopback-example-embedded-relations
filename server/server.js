@@ -4,8 +4,6 @@ var boot = require('loopback-boot');
 var bodyParser = require('body-parser');
 
 var app = module.exports = loopback();
-app.middleware('initial', bodyParser.urlencoded({ extended: true }));
-
 
 boot(app, __dirname);
 app.set('view engine', 'ejs'); // LoopBack comes with EJS out-of-box
@@ -30,20 +28,12 @@ app.start = function() {
 if (require.main === module) {
   app.start();
 }
-// app.use('/', function(req, res, next) {
-//   app.models.Customer.findOne({where: {name: 'Customer A'}}, function(err, customer) {
-//     if (err) return next(err);
-//     res.render('index', {customer: customer});
-//   });
-// });
 
 var router = app.loopback.Router();
-
-  router.get('/', function(req, res, next) {
-    app.models.Customer.findOne({where: {name: 'Customer A'}}, function(err, customer) {
-    if (err) return next(err);
-    res.render('index', {customer: customer});
-  });
-  });
-
+router.get('/', function(req, res, next) {
+  app.models.Customer.findOne({where: {name: 'Customer A'}}, function(err, customer) {
+  if (err) return next(err);
+  res.render('index', {customer: customer});
+});
+});
 app.use(router);
