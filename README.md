@@ -1,2 +1,2 @@
 # loopback-example-embedded-relations
-LoopBack example application for embedded relations
+Deprecated a loopBack example application for embedded relations
