@@ -1,5 +1,6 @@
 #DEPRECATED
-This repository is DEPRECATED because it's merged into loopback-example-relations.
+
+This repository is DEPRECATED because it's merged into [loopback-example-relations](https://github.com/strongloop/loopback-example-relations).
 
 ---
 
